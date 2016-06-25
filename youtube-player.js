@@ -25,21 +25,23 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onYoutubePlayerReady(args) {
-    getNextVideoId((id) => {
-        args.target.loadVideoById(id);
-    })
+    tryPlayNextVideo(args.target);
 }
 
 function onPlayerStateChanged(args) {
     var state = args.target.getPlayerState();
     if (state === 0) {
-        playNextVideo(args.target);
+        tryPlayNextVideo(args.target);
     }
 }
 
-function playNextVideo(player) {
-    getNextVideoId((id) => {
-        player.loadVideoById(id);
+function tryPlayNextVideo(player) {
+    getNextVideoId((resp) => {
+        if (resp.success) {
+            player.loadVideoById(resp.videoId);
+        } else {
+            pollForNewVideo();
+        }
     })
 }
 
@@ -47,11 +49,15 @@ function getNextVideoId(onFinished) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = () => {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-            console.log(xmlHttp.responseText);
-            onFinished(xmlHttp.responseText);
+            onFinished(xmlHttp.response);
         }
     }
 
+    xmlHttp.responseType = "json";
     xmlHttp.open("GET", "./getNextVideoId.php", true);
     xmlHttp.send(null);
+}
+
+function pollForNewVideo() {
+
 }
