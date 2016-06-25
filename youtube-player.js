@@ -48,8 +48,14 @@ function tryPlayNextVideo(player) {
 function getNextVideoId(onFinished) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = () => {
-        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-            onFinished(xmlHttp.response);
+        if (xmlHttp.readyState === 4) {
+            if (xmlHttp.status === 200) {
+                onFinished(xmlHttp.response);
+            } else {
+                onFinished({
+                    "success": false
+                });
+            }
         }
     }
 
