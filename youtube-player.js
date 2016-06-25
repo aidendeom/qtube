@@ -36,10 +36,13 @@ function onPlayerStateChanged(args) {
 }
 
 function tryPlayNextVideo(player) {
+    console.log("requesting new video id...");
     getNextVideoId((resp) => {
         if (resp.success) {
+            console.log("Got video with id=>" + resp.videoId);
             player.loadVideoById(resp.videoId);
         } else {
+            console.log("Failed to get video id, trying again in 5 sec");
             pollForNewVideo();
         }
     })
@@ -65,5 +68,8 @@ function getNextVideoId(onFinished) {
 }
 
 function pollForNewVideo() {
+    var func = tryPlayNextVideo;
+    var delay = 5 * 1000; //ms
 
+    window.setTimeout(func, delay, player);
 }
