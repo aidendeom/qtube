@@ -60,7 +60,7 @@ function createResultEntry(result, parent) {
     var videoId = result.id.videoId;
     var button = document.createElement("input");
     button.setAttribute("type", "button");
-    button.setAttribute("onClick", "enqueueVideo(" + videoId + "); return false");
+    button.setAttribute("onClick", "enqueueVideo('" + videoId + "'); return false");
     button.setAttribute("value", "Enqueue");
 
     d.appendChild(img);
@@ -85,5 +85,12 @@ function onApiLoaded() {
 }
 
 function enqueueVideo(videoId) {
-
+    $.post(
+        "enqueueVideoId.php",
+        { "videoId": videoId },
+        (data) => {
+            alert("success: " + data.success);
+        },
+        "json"
+    )
 }
