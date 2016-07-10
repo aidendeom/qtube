@@ -1,6 +1,5 @@
 var seachEnabled = false;
 var youtube = null;
-var exampleResults = "";
 var ApiKey = ""; 
 var waitingForApiKey = false;
 
@@ -14,6 +13,7 @@ $("#searchQuery").keypress((event) => {
 $.get("api-key", (response) => {
     ApiKey = response;
     if (waitingForApiKey) {
+        waitingForApiKey = false;
         onApiLoaded();
     }
 });
@@ -57,8 +57,15 @@ function createResultEntry(result, parent) {
     var p = document.createElement("p");
     p.textContent = result.snippet.title;
 
+    var videoId = result.id.videoId;
+    var button = document.createElement("input");
+    button.setAttribute("type", "button");
+    button.setAttribute("onClick", "enqueueVideo(" + videoId + "); return false");
+    button.setAttribute("value", "Enqueue");
+
     d.appendChild(img);
     d.appendChild(p);
+    d.appendChild(button);
     parent.appendChild(d);
 }
 
@@ -75,4 +82,8 @@ function onApiLoaded() {
         $("#searchButton").attr("disabled", false);
         youtube = gapi.client.youtube;
     });
+}
+
+function enqueueVideo(videoId) {
+
 }
