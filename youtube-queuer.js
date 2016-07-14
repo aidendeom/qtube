@@ -42,6 +42,8 @@ function onSearchSuccess(response) {
         return;
     }
 
+    resultsDiv.innerHTML = "";
+
     resultList.forEach((r, idx) => {
         createResultEntry(r, resultsDiv);
     });
