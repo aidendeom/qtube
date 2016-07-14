@@ -1,11 +1,11 @@
 <?php
 
-try {
-    $response = [
-        "success" => false,
-        "videoId" => ""
-    ];
+$response = [
+    "success" => false,
+    "videoId" => ""
+];
 
+try {
     $db = new PDO("sqlite:db/qtube");
 
     $sql = "SELECT * FROM video_ids ORDER BY id ASC LIMIT 1";
