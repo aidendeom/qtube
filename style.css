@@ -1,0 +1,13 @@
+.resultEntry {
+    margin-top: 4em;
+    margin-left: 2em;
+}
+
+.imgHolder {
+    float: left;
+}
+
+.descHolder {
+    display: inline-block;
+    margin-left: 1em;
+}

@@ -50,8 +50,11 @@ function onSearchSuccess(response) {
 }
 
 function createResultEntry(result, parent) {
-    var d = document.createElement("div");
-    d.setAttribute("class", "resultEntry");
+    var resultEntry = document.createElement("div");
+    resultEntry.setAttribute("class", "resultEntry");
+
+    var imgHolder = document.createElement("div");
+    imgHolder.setAttribute("class", "imgHolder");
 
     var videoId = result.id.videoId;
     var a = document.createElement("a");
@@ -60,13 +63,20 @@ function createResultEntry(result, parent) {
     var img = document.createElement("img");
     img.src = result.snippet.thumbnails.default.url;
 
-    var p = document.createElement("p");
-    p.textContent = result.snippet.title;
+    var descHolder = document.createElement("div");
+    descHolder.setAttribute("class", "descHolder");
+
+    var desc = document.createElement("p");
+    desc.textContent = result.snippet.title;
 
     a.appendChild(img);
-    d.appendChild(a);
-    d.appendChild(p);
-    parent.appendChild(d);
+    imgHolder.appendChild(a);
+    resultEntry.appendChild(imgHolder);
+
+    descHolder.appendChild(desc)
+    resultEntry.appendChild(descHolder);
+
+    parent.appendChild(resultEntry);
 }
 
 function onApiLoaded() {
