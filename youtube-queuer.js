@@ -53,21 +53,19 @@ function createResultEntry(result, parent) {
     var d = document.createElement("div");
     d.setAttribute("class", "resultEntry");
 
+    var videoId = result.id.videoId;
+    var a = document.createElement("a");
+    a.setAttribute("href", "javascript:enqueueVideo('"+ videoId +"')");
+
     var img = document.createElement("img");
     img.src = result.snippet.thumbnails.default.url;
 
     var p = document.createElement("p");
     p.textContent = result.snippet.title;
 
-    var videoId = result.id.videoId;
-    var button = document.createElement("input");
-    button.setAttribute("type", "button");
-    button.setAttribute("onClick", "enqueueVideo('" + videoId + "'); return false");
-    button.setAttribute("value", "Enqueue");
-
-    d.appendChild(img);
+    a.appendChild(img);
+    d.appendChild(a);
     d.appendChild(p);
-    d.appendChild(button);
     parent.appendChild(d);
 }
 
