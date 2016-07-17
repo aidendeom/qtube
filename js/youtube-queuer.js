@@ -50,13 +50,15 @@ function onSearchSuccess(response) {
 }
 
 function createResultEntry(result, parent) {
+    var videoId = result.id.videoId;
+
     var resultEntry = document.createElement("div");
     resultEntry.setAttribute("class", "resultEntry");
+    resultEntry.setAttribute("id", videoId);
 
     var imgHolder = document.createElement("div");
     imgHolder.setAttribute("class", "imgHolder");
 
-    var videoId = result.id.videoId;
     var a = document.createElement("a");
     a.setAttribute("href", "javascript:enqueueVideo('"+ videoId +"')");
 

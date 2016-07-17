@@ -1,0 +1,27 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.mainMenu {
+  margin-top: 4em;
+}
+
+.rowelt {
+  display: inline-block;
+  margin-left: 6em;
+  margin-right: 6em;
+}
+
+.mainMenuElement {
+  margin: 2em;
+  display: inline;
+}
+
+.mainMenuElement img {
+  width: 30%;
+  height: 30%;
+}
