@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>qTube - Queuer</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <h2>
+        Video Search
+    </h2>
+    <input type="search" id="searchQuery" disabled>
+    <input type="button" id="searchButton" value="Search" disabled onclick="doSearch();return false;">
+
+    <div id="results"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="js/youtube-queuer.js"></script>
+    <script src="//apis.google.com/js/client.js?onload=onApiLoaded"></script>
+</body>
+
+</html>
