@@ -6,7 +6,7 @@ $response = [
 ];
 
 try {
-    $db = new PDO("sqlite:db/qtube");
+    $db = new PDO("sqlite:../db/qtube");
 
     $sql = "SELECT * FROM video_ids ORDER BY id ASC LIMIT 1";
     $id = -1;

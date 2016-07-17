@@ -101,7 +101,13 @@ function enqueueVideo(videoId) {
         "php/enqueueVideoId.php",
         { "videoId": videoId },
         (data) => {
-            alert("success: " + data.success);
+            var message = "";
+            if (data.success) {
+                message = "Successfully queued video";
+            } else {
+                message = "Failed to queue video, try again";
+            }
+            alert(message);
         },
         "json"
     )

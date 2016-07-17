@@ -18,7 +18,7 @@ die();
 
 function insertVideo($id) {
     try {
-        $db = new PDO("sqlite:db/qtube");
+        $db = new PDO("sqlite:../db/qtube");
         $sql = "INSERT INTO `video_ids` (`video_id`, `time`) VALUES (:video_id, :time)";
 
         $stmt = $db->prepare($sql, [
