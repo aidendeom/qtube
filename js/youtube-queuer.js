@@ -98,7 +98,7 @@ function onApiLoaded() {
 
 function enqueueVideo(videoId) {
     $.post(
-        "enqueueVideoId.php",
+        "php/enqueueVideoId.php",
         { "videoId": videoId },
         (data) => {
             alert("success: " + data.success);

@@ -15,8 +15,8 @@ thisScriptTag.parentNode.insertBefore(youtubeApiTag, thisScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
-        height: "400",
-        width: "400",
+        //height: "400",
+        //width: "400",
         events: {
             "onReady": onYoutubePlayerReady,
             "onStateChange": onPlayerStateChanged
@@ -60,7 +60,7 @@ function getNextVideoId(onFinished) {
     }
 
     xmlHttp.responseType = "json";
-    xmlHttp.open("GET", "./getNextVideoId.php", true);
+    xmlHttp.open("GET", "php/getNextVideoId.php", true);
     xmlHttp.send(null);
 }
 
